@@ -1,0 +1,13 @@
+id,nombre,apellidos,edad,direccion,email
+1,Juan,Perez,25,Calle 123,juan.perez@example.com
+2,Maria,Gonzalez,30,Avenida Principal 456,maria.gonzalez@example.com
+3,Luis,Hernandez,40,Plaza Mayor 789,luis.hernandez@example.com
+4,Ana,Rodriguez,35,Calle Secundaria 321,ana.rodriguez@example.com
+5,Pedro,Martinez,28,Avenida Central 654,pedro.martinez@example.com
+6,Sofia,Lopez,33,Calle Mayor 987,sofia.lopez@example.com
+7,Diego,Ramirez,45,Avenida Secundaria 753,diego.ramirez@example.com
+8,Laura,Fernandez,29,Plaza Principal 159,laura.fernandez@example.com
+9,Carlos,Gomez,32,Avenida Norte 357,carlos.gomez@example.com
+10,Andrea,Diaz,27,Calle Sur 852,andrea.diaz@example.com
+11,Julio,Alvarez,38,Calle Este 246,julio.alvarez@example.com
+12,Natalia,Ruiz,31,Avenida Oeste 468,natalia.ruiz@example.com
