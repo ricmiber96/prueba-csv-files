@@ -16,10 +16,9 @@ app.use(express.json());
 let usersData: Array<Record<string,string>> = []
 
 app.post('/api/files', upload.single('file') ,async (req, res) => {
-    console.log(req.body);
-    res.status(200).send({ message: 'File uploaded successfully' });
     // 1 Extract the file from the request
     const {file} = req;
+    console.log(file);
     // 2 Validate that we have the file
     if (!file) {
         return res.status(500).send({ message: 'File is required' });
@@ -31,18 +30,17 @@ app.post('/api/files', upload.single('file') ,async (req, res) => {
     // 4 Transform the file to string
     let json: Array<Record<string,string>>  = [];
     try {
-       const csv = Buffer.from(file.buffer).toString('utf-8');
-       console.log(csv);
+       const rawCsv = Buffer.from(file.buffer).toString('utf-8');
+       console.log(rawCsv);
         // 5 Transfomr the string to JSON
         // 6 Save the json to db
-       json = csvToJson.csvStringToJson(csv);
+       json = csvToJson.fieldDelimiter(',').csvStringToJson(rawCsv);
        usersData = json;
-        
     } catch (error) {
-        return res.status(500).send({ message: 'Error parsing the file' });
+        return res.status(500).json({ message: 'Error parsing the file' });
     }
     // 7 Return code 200 with a message 'File uploaded successfully' and the json
-    res.status(200).send({ message: 'File uploaded successfully', data: json });
+    res.status(200).json({ message: 'File uploaded successfully', data: json });
 
     })
 
