@@ -3,6 +3,7 @@ import './App.css'
 import { uploadFile } from './services/upload'
 import { Toaster , toast} from 'sonner'
 import { type Data } from './types'
+import Search from './components/Search'
 
 const APP_STATUS = {
   IDLE: 'idle',
@@ -55,13 +56,16 @@ function App() {
   }
 
   const showButton = appStatus === APP_STATUS.REDY_TO_UPLOAD || appStatus === APP_STATUS.UPLOADING
+  const showInput = appStatus !== APP_STATUS.SUCCESS
 
   return (
     <div>
       <Toaster />
       <h4>Challenge: Upload CSV File & Search</h4>
       <div>
-        <form onSubmit={handleSubmit}>
+        {
+          showInput && (
+            <form onSubmit={handleSubmit}>
           <label>
          <input
           disabled={appStatus === APP_STATUS.UPLOADING} 
@@ -78,6 +82,14 @@ function App() {
         }
         
         </form>
+          )
+        }
+        
+        {
+          appStatus === APP_STATUS.SUCCESS && (
+            <Search initialData={data} />
+          )
+        }
       </div>
     </div>
   )
